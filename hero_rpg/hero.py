@@ -34,12 +34,20 @@ class Hero:
                  name: str, 
                  hero_class: str, 
                  max_health: int = 100) -> None:
+    # -- Identity ------
         self.name: str = name
         self.hero_class: str = hero_class
         self.max_health: int = max_health
         self.health: int = max_health
 
-    # ── Health ────────────────────────────────────────────────────────────────
+    # Bag/Inventory
+    # Bag 1: for potions, armors, etc
+        self.inventory: Bag[Item] = Bag(capacity=20)
+
+    # Bag 2: only for weapons
+        self.equipped_weapons: Bag[Weapon] = Bag(capacity=3)
+
+    # ── Health ──────────────────────────────────────────────────────────────
 
     def take_damage(self, amount: int) -> int:
         """
