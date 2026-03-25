@@ -47,6 +47,9 @@ class Hero:
     # Bag 2: only for weapons
         self.equipped_weapons: Bag[Weapon] = Bag(capacity=3)
 
+    # Skills
+        self.skills: set[str] =set()
+
     # ── Health ──────────────────────────────────────────────────────────────
 
     def take_damage(self, amount: int) -> int:
