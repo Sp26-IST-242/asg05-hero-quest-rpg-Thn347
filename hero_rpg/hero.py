@@ -64,8 +64,11 @@ class Hero:
     # Item Repistry
         self._item_registry: defaultdict[str, list[Item]] = defaultdict(list)
 
-    # ── Health ──────────────────────────────────────────────────────────────
+    # Combat Log
+        self.combat_log: deque[str] = deque(maxlen=10)
+        
 
+    # ── Health ──────────────────────────────────────────────────────────────
     def take_damage(self, amount: int) -> int:
         """
         Apply incoming damage, clamped so HP never drops below 0.
@@ -73,7 +76,9 @@ class Hero:
         Returns:
             Actual HP lost (may be less than `amount` near death).
         """
-        pass
+        actual: int = min(self.health, amount)
+        self.health -= actual
+        return actual
 
     def heal(self, amount: int) -> int:
         """
@@ -82,7 +87,9 @@ class Hero:
         Returns:
             Actual HP restored (may be less if already near full).
         """
-        pass
+        actual: int = min(self.max_health - self.health, amount)
+        self.health += actual
+        return actual
 
     def is_alive(self) -> bool:
         """Return True as long as health is above zero."""
