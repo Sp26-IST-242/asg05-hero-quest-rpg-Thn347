@@ -137,7 +137,6 @@ def armor() -> Item:
 # ══════════════════════════════════════════════════════════════════════════════
 # HERO CONSTRUCTOR TESTS
 # ══════════════════════════════════════════════════════════════════════════════
-
 class TestHeroConstructor:
     """Verify that the Hero is initialized with the correct defaults."""
 
@@ -252,72 +251,72 @@ class TestCombat:
 # WEAPON TESTS
 # ══════════════════════════════════════════════════════════════════════════════
 
-# class TestWeapons:
-#     """Tests for equipping weapons and damage potential."""
+class TestWeapons:
+    """Tests for equipping weapons and damage potential."""
 
-#     def test_equip_weapon_returns_true(self, hero, sword):
-#         assert hero.equip_weapon(sword) is True
+    def test_equip_weapon_returns_true(self, hero, sword):
+        assert hero.equip_weapon(sword) is True
 
-#     def test_equip_weapon_adds_to_equipped(self, hero, sword):
-#         hero.equip_weapon(sword)
-#         assert sword in hero.equipped_weapons.all()
+    def test_equip_weapon_adds_to_equipped(self, hero, sword):
+        hero.equip_weapon(sword)
+        assert sword in hero.equipped_weapons.all()
 
-#     def test_equip_weapon_fails_when_slots_full(self, hero, sword, dagger, bow):
-#         hero.equip_weapon(sword)
-#         hero.equip_weapon(dagger)
-#         hero.equip_weapon(bow)
-#         extra = Weapon("Battle Axe", WeaponType.SWORD, damage=40)
-#         result = hero.equip_weapon(extra)
-#         assert result is False
+    def test_equip_weapon_fails_when_slots_full(self, hero, sword, dagger, bow):
+        hero.equip_weapon(sword)
+        hero.equip_weapon(dagger)
+        hero.equip_weapon(bow)
+        extra = Weapon("Battle Axe", WeaponType.SWORD, damage=40)
+        result = hero.equip_weapon(extra)
+        assert result is False
 
-#     def test_total_damage_potential_sums_equipped_weapons(self, hero, sword, dagger):
-#         hero.equip_weapon(sword)   # 30
-#         hero.equip_weapon(dagger)  # 18
-#         assert hero.total_damage_potential() == 48
+    def test_total_damage_potential_sums_equipped_weapons(self, hero, sword, dagger):
+        hero.equip_weapon(sword)   # 30
+        hero.equip_weapon(dagger)  # 18
+        assert hero.total_damage_potential() == 48
 
-#     def test_total_damage_potential_zero_with_no_weapons(self, hero):
-#         assert hero.total_damage_potential() == 0
+    def test_total_damage_potential_zero_with_no_weapons(self, hero):
+        assert hero.total_damage_potential() == 0
 
-#     def test_equip_weapon_logs_event(self, hero, sword):
-#         hero.equip_weapon(sword)
-#         assert any("Iron Sword" in entry for entry in hero.combat_log)
+    def test_equip_weapon_logs_event(self, hero, sword):
+        hero.equip_weapon(sword)
+        assert any("Iron Sword" in entry for entry in hero.combat_log)
 
 
-# # ══════════════════════════════════════════════════════════════════════════════
-# # SKILL TESTS
-# # ══════════════════════════════════════════════════════════════════════════════
+# ══════════════════════════════════════════════════════════════════════════════
+# SKILL TESTS
+# ══════════════════════════════════════════════════════════════════════════════
 
-# class TestSkills:
-#     """Tests verifying set behavior for skill learning."""
+class TestSkills:
+    """Tests verifying set behavior for skill learning."""
 
-#     def test_learn_new_skill_returns_true(self, hero):
-#         assert hero.learn_skill("Shield Bash") is True
+    def test_learn_new_skill_returns_true(self, hero):
+        assert hero.learn_skill("Shield Bash") is True
 
-#     def test_learn_duplicate_skill_returns_false(self, hero):
-#         hero.learn_skill("Shield Bash")
-#         result = hero.learn_skill("Shield Bash")   # duplicate
-#         assert result is False
+    def test_learn_duplicate_skill_returns_false(self, hero):
+        hero.learn_skill("Shield Bash")
+        result = hero.learn_skill("Shield Bash")   # duplicate
+        assert result is False
 
-#     def test_skills_set_contains_no_duplicates(self, hero):
-#         hero.learn_skill("Fireball")
-#         hero.learn_skill("Fireball")
-#         hero.learn_skill("Fireball")
-#         assert len(hero.skills) == 1   # set: no duplicates
+    def test_skills_set_contains_no_duplicates(self, hero):
+        hero.learn_skill("Fireball")
+        hero.learn_skill("Fireball")
+        hero.learn_skill("Fireball")
+        assert len(hero.skills) == 1   # set: no duplicates
 
-#     def test_skills_is_unordered_set(self, hero):
-#         hero.learn_skill("A")
-#         hero.learn_skill("B")
-#         hero.learn_skill("C")
-#         # The collection is a set, not a list
-#         assert isinstance(hero.skills, set)
+    def test_skills_is_unordered_set(self, hero):
+        hero.learn_skill("A")
+        hero.learn_skill("B")
+        hero.learn_skill("C")
+        # The collection is a set, not a list
+        assert isinstance(hero.skills, set)
 
-#     def test_multiple_different_skills(self, hero):
-#         hero.learn_skill("Dodge")
-#         hero.learn_skill("Counter Strike")
-#         hero.learn_skill("War Cry")
-#         assert "Dodge" in hero.skills
-#         assert "War Cry" in hero.skills
-#         assert len(hero.skills) == 3
+    def test_multiple_different_skills(self, hero):
+        hero.learn_skill("Dodge")
+        hero.learn_skill("Counter Strike")
+        hero.learn_skill("War Cry")
+        assert "Dodge" in hero.skills
+        assert "War Cry" in hero.skills
+        assert len(hero.skills) == 3
 
 
 # # ══════════════════════════════════════════════════════════════════════════════
