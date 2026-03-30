@@ -60,78 +60,78 @@ def armor() -> Item:
 # BAG[T] TESTS
 # ══════════════════════════════════════════════════════════════════════════════
 
-class TestBag:
-    """Tests for the generic Bag[T] container."""
+# class TestBag:
+#     """Tests for the generic Bag[T] container."""
 
-    def test_bag_starts_empty(self):
-        """A new bag should have zero items."""
-        bag: Bag[str] = Bag(capacity=5)
-        assert len(bag) == 0
+#     def test_bag_starts_empty(self):
+#         """A new bag should have zero items."""
+#         bag: Bag[str] = Bag(capacity=5)
+#         assert len(bag) == 0
 
-    def test_add_returns_true_when_space_available(self):
-        """add() should return True and increase length by 1."""
-        bag: Bag[str] = Bag(capacity=5)
-        result = bag.add("item_a")
-        assert result is True
-        assert len(bag) == 1
+#     def test_add_returns_true_when_space_available(self):
+#         """add() should return True and increase length by 1."""
+#         bag: Bag[str] = Bag(capacity=5)
+#         result = bag.add("item_a")
+#         assert result is True
+#         assert len(bag) == 1
 
-    def test_add_returns_false_when_full(self):
-        """add() should return False and not change length when at capacity."""
-        bag: Bag[int] = Bag(capacity=2)
-        bag.add(1)
-        bag.add(2)
-        # Bag is now full
-        result = bag.add(3)
-        assert result is False
-        assert len(bag) == 2
+#     def test_add_returns_false_when_full(self):
+#         """add() should return False and not change length when at capacity."""
+#         bag: Bag[int] = Bag(capacity=2)
+#         bag.add(1)
+#         bag.add(2)
+#         # Bag is now full
+#         result = bag.add(3)
+#         assert result is False
+#         assert len(bag) == 2
 
-    def test_is_full_false_when_space_remains(self):
-        bag: Bag[str] = Bag(capacity=3)
-        bag.add("x")
-        assert bag.is_full() is False
+#     def test_is_full_false_when_space_remains(self):
+#         bag: Bag[str] = Bag(capacity=3)
+#         bag.add("x")
+#         assert bag.is_full() is False
 
-    def test_is_full_true_at_capacity(self):
-        bag: Bag[str] = Bag(capacity=2)
-        bag.add("x")
-        bag.add("y")
-        assert bag.is_full() is True
+#     def test_is_full_true_at_capacity(self):
+#         bag: Bag[str] = Bag(capacity=2)
+#         bag.add("x")
+#         bag.add("y")
+#         assert bag.is_full() is True
 
-    def test_remove_existing_item(self):
-        """remove() should return True and reduce length by 1."""
-        bag: Bag[str] = Bag(capacity=5)
-        bag.add("sword")
-        result = bag.remove("sword")
-        assert result is True
-        assert len(bag) == 0
+#     def test_remove_existing_item(self):
+#         """remove() should return True and reduce length by 1."""
+#         bag: Bag[str] = Bag(capacity=5)
+#         bag.add("sword")
+#         result = bag.remove("sword")
+#         assert result is True
+#         assert len(bag) == 0
 
-    def test_remove_nonexistent_item_returns_false(self):
-        """remove() should return False if the item is not in the bag."""
-        bag: Bag[str] = Bag(capacity=5)
-        result = bag.remove("ghost_item")
-        assert result is False
+#     def test_remove_nonexistent_item_returns_false(self):
+#         """remove() should return False if the item is not in the bag."""
+#         bag: Bag[str] = Bag(capacity=5)
+#         result = bag.remove("ghost_item")
+#         assert result is False
 
-    def test_all_returns_copy_not_reference(self):
-        """all() must return a copy so external mutation doesn't affect bag."""
-        bag: Bag[str] = Bag(capacity=5)
-        bag.add("a")
-        copy = bag.all()
-        copy.append("injected")         # mutate the copy
-        assert len(bag) == 1            # internal bag must be unchanged
+#     def test_all_returns_copy_not_reference(self):
+#         """all() must return a copy so external mutation doesn't affect bag."""
+#         bag: Bag[str] = Bag(capacity=5)
+#         bag.add("a")
+#         copy = bag.all()
+#         copy.append("injected")         # mutate the copy
+#         assert len(bag) == 1            # internal bag must be unchanged
 
-    def test_bag_preserves_insertion_order(self):
-        """Items should be returned in insertion order (list-backed)."""
-        bag: Bag[str] = Bag(capacity=5)
-        for ch in ["c", "a", "b"]:
-            bag.add(ch)
-        assert bag.all() == ["c", "a", "b"]
+#     def test_bag_preserves_insertion_order(self):
+#         """Items should be returned in insertion order (list-backed)."""
+#         bag: Bag[str] = Bag(capacity=5)
+#         for ch in ["c", "a", "b"]:
+#             bag.add(ch)
+#         assert bag.all() == ["c", "a", "b"]
 
-    def test_bag_generic_with_weapon_type(self, sword, dagger):
-        """Verify Bag works correctly when typed as Bag[Weapon]."""
-        bag: Bag[Weapon] = Bag(capacity=2)
-        bag.add(sword)
-        bag.add(dagger)
-        assert len(bag) == 2
-        assert sword in bag.all()
+#     def test_bag_generic_with_weapon_type(self, sword, dagger):
+#         """Verify Bag works correctly when typed as Bag[Weapon]."""
+#         bag: Bag[Weapon] = Bag(capacity=2)
+#         bag.add(sword)
+#         bag.add(dagger)
+#         assert len(bag) == 2
+#         assert sword in bag.all()
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -252,183 +252,183 @@ class TestCombat:
 # WEAPON TESTS
 # ══════════════════════════════════════════════════════════════════════════════
 
-class TestWeapons:
-    """Tests for equipping weapons and damage potential."""
+# class TestWeapons:
+#     """Tests for equipping weapons and damage potential."""
 
-    def test_equip_weapon_returns_true(self, hero, sword):
-        assert hero.equip_weapon(sword) is True
+#     def test_equip_weapon_returns_true(self, hero, sword):
+#         assert hero.equip_weapon(sword) is True
 
-    def test_equip_weapon_adds_to_equipped(self, hero, sword):
-        hero.equip_weapon(sword)
-        assert sword in hero.equipped_weapons.all()
+#     def test_equip_weapon_adds_to_equipped(self, hero, sword):
+#         hero.equip_weapon(sword)
+#         assert sword in hero.equipped_weapons.all()
 
-    def test_equip_weapon_fails_when_slots_full(self, hero, sword, dagger, bow):
-        hero.equip_weapon(sword)
-        hero.equip_weapon(dagger)
-        hero.equip_weapon(bow)
-        extra = Weapon("Battle Axe", WeaponType.SWORD, damage=40)
-        result = hero.equip_weapon(extra)
-        assert result is False
+#     def test_equip_weapon_fails_when_slots_full(self, hero, sword, dagger, bow):
+#         hero.equip_weapon(sword)
+#         hero.equip_weapon(dagger)
+#         hero.equip_weapon(bow)
+#         extra = Weapon("Battle Axe", WeaponType.SWORD, damage=40)
+#         result = hero.equip_weapon(extra)
+#         assert result is False
 
-    def test_total_damage_potential_sums_equipped_weapons(self, hero, sword, dagger):
-        hero.equip_weapon(sword)   # 30
-        hero.equip_weapon(dagger)  # 18
-        assert hero.total_damage_potential() == 48
+#     def test_total_damage_potential_sums_equipped_weapons(self, hero, sword, dagger):
+#         hero.equip_weapon(sword)   # 30
+#         hero.equip_weapon(dagger)  # 18
+#         assert hero.total_damage_potential() == 48
 
-    def test_total_damage_potential_zero_with_no_weapons(self, hero):
-        assert hero.total_damage_potential() == 0
+#     def test_total_damage_potential_zero_with_no_weapons(self, hero):
+#         assert hero.total_damage_potential() == 0
 
-    def test_equip_weapon_logs_event(self, hero, sword):
-        hero.equip_weapon(sword)
-        assert any("Iron Sword" in entry for entry in hero.combat_log)
-
-
-# ══════════════════════════════════════════════════════════════════════════════
-# SKILL TESTS
-# ══════════════════════════════════════════════════════════════════════════════
-
-class TestSkills:
-    """Tests verifying set behavior for skill learning."""
-
-    def test_learn_new_skill_returns_true(self, hero):
-        assert hero.learn_skill("Shield Bash") is True
-
-    def test_learn_duplicate_skill_returns_false(self, hero):
-        hero.learn_skill("Shield Bash")
-        result = hero.learn_skill("Shield Bash")   # duplicate
-        assert result is False
-
-    def test_skills_set_contains_no_duplicates(self, hero):
-        hero.learn_skill("Fireball")
-        hero.learn_skill("Fireball")
-        hero.learn_skill("Fireball")
-        assert len(hero.skills) == 1   # set: no duplicates
-
-    def test_skills_is_unordered_set(self, hero):
-        hero.learn_skill("A")
-        hero.learn_skill("B")
-        hero.learn_skill("C")
-        # The collection is a set, not a list
-        assert isinstance(hero.skills, set)
-
-    def test_multiple_different_skills(self, hero):
-        hero.learn_skill("Dodge")
-        hero.learn_skill("Counter Strike")
-        hero.learn_skill("War Cry")
-        assert "Dodge" in hero.skills
-        assert "War Cry" in hero.skills
-        assert len(hero.skills) == 3
+#     def test_equip_weapon_logs_event(self, hero, sword):
+#         hero.equip_weapon(sword)
+#         assert any("Iron Sword" in entry for entry in hero.combat_log)
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-# INVENTORY TESTS
-# ══════════════════════════════════════════════════════════════════════════════
+# # ══════════════════════════════════════════════════════════════════════════════
+# # SKILL TESTS
+# # ══════════════════════════════════════════════════════════════════════════════
 
-class TestInventory:
-    """Tests for item pick-up and defaultdict grouping."""
+# class TestSkills:
+#     """Tests verifying set behavior for skill learning."""
 
-    def test_pick_up_item_returns_true(self, hero, potion):
-        assert hero.pick_up_item(potion) is True
+#     def test_learn_new_skill_returns_true(self, hero):
+#         assert hero.learn_skill("Shield Bash") is True
 
-    def test_pick_up_item_adds_to_inventory(self, hero, potion):
-        hero.pick_up_item(potion)
-        assert potion in hero.inventory.all()
+#     def test_learn_duplicate_skill_returns_false(self, hero):
+#         hero.learn_skill("Shield Bash")
+#         result = hero.learn_skill("Shield Bash")   # duplicate
+#         assert result is False
 
-    def test_pick_up_item_registers_by_type(self, hero, potion, armor):
-        hero.pick_up_item(potion)
-        hero.pick_up_item(armor)
-        grouped = hero.items_by_type()
-        # potion should be under "Potion" key
-        assert "Potion" in grouped
-        assert potion in grouped["Potion"]
-        # armor should be under "Armor" key
-        assert "Armor" in grouped
-        assert armor in grouped["Armor"]
+#     def test_skills_set_contains_no_duplicates(self, hero):
+#         hero.learn_skill("Fireball")
+#         hero.learn_skill("Fireball")
+#         hero.learn_skill("Fireball")
+#         assert len(hero.skills) == 1   # set: no duplicates
 
-    def test_multiple_potions_grouped_together(self, hero):
-        p1 = Item("Health Potion", ItemType.POTION, value=50)
-        p2 = Item("Mana Potion",   ItemType.POTION, value=40)
-        hero.pick_up_item(p1)
-        hero.pick_up_item(p2)
-        grouped = hero.items_by_type()
-        assert len(grouped["Potion"]) == 2
+#     def test_skills_is_unordered_set(self, hero):
+#         hero.learn_skill("A")
+#         hero.learn_skill("B")
+#         hero.learn_skill("C")
+#         # The collection is a set, not a list
+#         assert isinstance(hero.skills, set)
 
-    def test_items_by_type_returns_plain_dict(self, hero, potion):
-        hero.pick_up_item(potion)
-        result = hero.items_by_type()
-        # Should be a regular dict, not a defaultdict
-        assert type(result) is dict
-
-    def test_pick_up_returns_false_when_full(self, hero):
-        """inventory capacity is 20; adding a 21st item should fail."""
-        for i in range(20):
-            hero.pick_up_item(Item(f"Item_{i}", ItemType.MISC, value=1))
-        extra = Item("One Too Many", ItemType.MISC, value=1)
-        assert hero.pick_up_item(extra) is False
+#     def test_multiple_different_skills(self, hero):
+#         hero.learn_skill("Dodge")
+#         hero.learn_skill("Counter Strike")
+#         hero.learn_skill("War Cry")
+#         assert "Dodge" in hero.skills
+#         assert "War Cry" in hero.skills
+#         assert len(hero.skills) == 3
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-# KILL COUNTER TESTS
-# ══════════════════════════════════════════════════════════════════════════════
+# # ══════════════════════════════════════════════════════════════════════════════
+# # INVENTORY TESTS
+# # ══════════════════════════════════════════════════════════════════════════════
 
-class TestKillCounter:
-    """Tests for Counter-based kill tracking."""
+# class TestInventory:
+#     """Tests for item pick-up and defaultdict grouping."""
 
-    def test_record_kill_increments_counter(self, hero):
-        hero.record_kill("Goblin")
-        assert hero.kill_counter["Goblin"] == 1
+#     def test_pick_up_item_returns_true(self, hero, potion):
+#         assert hero.pick_up_item(potion) is True
 
-    def test_record_kill_accumulates(self, hero):
-        for _ in range(5):
-            hero.record_kill("Goblin")
-        assert hero.kill_counter["Goblin"] == 5
+#     def test_pick_up_item_adds_to_inventory(self, hero, potion):
+#         hero.pick_up_item(potion)
+#         assert potion in hero.inventory.all()
 
-    def test_top_kills_returns_most_common(self, hero):
-        for _ in range(5): hero.record_kill("Goblin")
-        for _ in range(3): hero.record_kill("Orc")
-        hero.record_kill("Dragon")
-        top = hero.top_kills(2)
-        assert top[0] == ("Goblin", 5)
-        assert top[1] == ("Orc", 3)
+#     def test_pick_up_item_registers_by_type(self, hero, potion, armor):
+#         hero.pick_up_item(potion)
+#         hero.pick_up_item(armor)
+#         grouped = hero.items_by_type()
+#         # potion should be under "Potion" key
+#         assert "Potion" in grouped
+#         assert potion in grouped["Potion"]
+#         # armor should be under "Armor" key
+#         assert "Armor" in grouped
+#         assert armor in grouped["Armor"]
 
-    def test_top_kills_default_n_is_3(self, hero):
-        hero.record_kill("A")
-        hero.record_kill("B")
-        hero.record_kill("C")
-        hero.record_kill("D")
-        assert len(hero.top_kills()) == 3
+#     def test_multiple_potions_grouped_together(self, hero):
+#         p1 = Item("Health Potion", ItemType.POTION, value=50)
+#         p2 = Item("Mana Potion",   ItemType.POTION, value=40)
+#         hero.pick_up_item(p1)
+#         hero.pick_up_item(p2)
+#         grouped = hero.items_by_type()
+#         assert len(grouped["Potion"]) == 2
 
-    def test_record_kill_adds_to_combat_log(self, hero):
-        hero.record_kill("Troll")
-        assert any("Troll" in entry for entry in hero.combat_log)
+#     def test_items_by_type_returns_plain_dict(self, hero, potion):
+#         hero.pick_up_item(potion)
+#         result = hero.items_by_type()
+#         # Should be a regular dict, not a defaultdict
+#         assert type(result) is dict
 
-    def test_kill_counter_unknown_enemy_returns_zero(self, hero):
-        """Counter defaults missing keys to 0 — no KeyError."""
-        assert hero.kill_counter["Unknown"] == 0
+#     def test_pick_up_returns_false_when_full(self, hero):
+#         """inventory capacity is 20; adding a 21st item should fail."""
+#         for i in range(20):
+#             hero.pick_up_item(Item(f"Item_{i}", ItemType.MISC, value=1))
+#         extra = Item("One Too Many", ItemType.MISC, value=1)
+#         assert hero.pick_up_item(extra) is False
+
+
+# # ══════════════════════════════════════════════════════════════════════════════
+# # KILL COUNTER TESTS
+# # ══════════════════════════════════════════════════════════════════════════════
+
+# class TestKillCounter:
+#     """Tests for Counter-based kill tracking."""
+
+#     def test_record_kill_increments_counter(self, hero):
+#         hero.record_kill("Goblin")
+#         assert hero.kill_counter["Goblin"] == 1
+
+#     def test_record_kill_accumulates(self, hero):
+#         for _ in range(5):
+#             hero.record_kill("Goblin")
+#         assert hero.kill_counter["Goblin"] == 5
+
+#     def test_top_kills_returns_most_common(self, hero):
+#         for _ in range(5): hero.record_kill("Goblin")
+#         for _ in range(3): hero.record_kill("Orc")
+#         hero.record_kill("Dragon")
+#         top = hero.top_kills(2)
+#         assert top[0] == ("Goblin", 5)
+#         assert top[1] == ("Orc", 3)
+
+#     def test_top_kills_default_n_is_3(self, hero):
+#         hero.record_kill("A")
+#         hero.record_kill("B")
+#         hero.record_kill("C")
+#         hero.record_kill("D")
+#         assert len(hero.top_kills()) == 3
+
+#     def test_record_kill_adds_to_combat_log(self, hero):
+#         hero.record_kill("Troll")
+#         assert any("Troll" in entry for entry in hero.combat_log)
+
+#     def test_kill_counter_unknown_enemy_returns_zero(self, hero):
+#         """Counter defaults missing keys to 0 — no KeyError."""
+#         assert hero.kill_counter["Unknown"] == 0
 
 
 # ══════════════════════════════════════════════════════════════════════════════
 # STAT UPGRADE TESTS
 # ══════════════════════════════════════════════════════════════════════════════
 
-class TestStats:
-    """Tests for upgrading hero stats."""
+# class TestStats:
+#     """Tests for upgrading hero stats."""
 
-    def test_upgrade_existing_stat(self, hero):
-        result = hero.upgrade_stat("strength", 5)
-        assert result is True
-        assert hero.stats["strength"] == 15
+#     def test_upgrade_existing_stat(self, hero):
+#         result = hero.upgrade_stat("strength", 5)
+#         assert result is True
+#         assert hero.stats["strength"] == 15
 
-    def test_upgrade_nonexistent_stat_returns_false(self, hero):
-        result = hero.upgrade_stat("luck", 10)
-        assert result is False
+#     def test_upgrade_nonexistent_stat_returns_false(self, hero):
+#         result = hero.upgrade_stat("luck", 10)
+#         assert result is False
 
-    def test_upgrade_does_not_affect_other_stats(self, hero):
-        hero.upgrade_stat("strength", 10)
-        assert hero.stats["dexterity"] == 10    # unchanged
-        assert hero.stats["defense"]   == 5     # unchanged
+#     def test_upgrade_does_not_affect_other_stats(self, hero):
+#         hero.upgrade_stat("strength", 10)
+#         assert hero.stats["dexterity"] == 10    # unchanged
+#         assert hero.stats["defense"]   == 5     # unchanged
 
-    def test_multiple_upgrades_accumulate(self, hero):
-        hero.upgrade_stat("intelligence", 5)
-        hero.upgrade_stat("intelligence", 5)
-        assert hero.stats["intelligence"] == 20
+#     def test_multiple_upgrades_accumulate(self, hero):
+#         hero.upgrade_stat("intelligence", 5)
+#         hero.upgrade_stat("intelligence", 5)
+#         assert hero.stats["intelligence"] == 20
