@@ -114,9 +114,10 @@ class Hero:
         """
         success: bool = self.equipped_weapons.add(weapon)
         if success:
-            self.combat_log.append(
-                f"{self.weapon}"
+           self.combat_log.append(
+                f"{self.name} equipped {weapon.name}"
             )
+        return success
 
     def learn_skill(self, skill: str) -> bool:
         """
@@ -125,7 +126,10 @@ class Hero:
         Returns:
             True if new skill; False if already known.
         """
-        pass
+        if skill in self.skills:
+            return False
+        self.skills.add(skill)
+        return True
 
     # ── Inventory ─────────────────────────────────────────────────────────────
 
@@ -136,14 +140,20 @@ class Hero:
         Returns:
             True if added; False if inventory is full.
         """
-        pass
+        success: bool = self.inventory.add(item)
+        if success:
+            self.combat_log.append(
+                f"{self.name} picked up {item.name}"
+            )
+            self._item_registry[item.item_type].append(item)
+        return success
 
     def items_by_type(self) -> dict[str, list[Item]]:
         """
         Return items grouped by ItemType name as a plain dict copy.
         Callers cannot mutate the internal defaultdict directly.
         """
-        pass
+        return dict(self._item_registry)
 
     # ── Combat & Kill Tracking ────────────────────────────────────────────────
 
