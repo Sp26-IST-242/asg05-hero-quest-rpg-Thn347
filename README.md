@@ -1,1 +1,3 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=23283482&assignment_repo_type=AssignmentRepo)
+Author: Thuan Nguyen
+Description of the project: You will build a simplified Action RPG (Role-Playing Game) character system in Python. The project focuses on using Python's built-in and specialized collections (list, set, dict, Counter, defaultdict, deque) and generics (TypeVar, Generic) to model a Hero, their inventory, weapons, skills, and combat history.
