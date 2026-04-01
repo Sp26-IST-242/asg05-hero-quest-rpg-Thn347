@@ -145,7 +145,7 @@ class Hero:
             self.combat_log.append(
                 f"{self.name} picked up {item.name}"
             )
-            self._item_registry[item.item_type].append(item)
+            self._item_registry[item.item_type.value].append(item)
         return success
 
     def items_by_type(self) -> dict[str, list[Item]]:
