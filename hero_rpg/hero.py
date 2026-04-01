@@ -189,3 +189,13 @@ class Hero:
             True if stat exists and was upgraded; False if key not found.
         """
         pass
+
+    # def __str__(self):
+    #     pass
+
+    def __repr__(self) -> str:
+        return (
+            f"Hero(name={self.name}"
+            f", class={self.hero_class}"
+            f", HP={self.health}/{self.max_health})"
+        )

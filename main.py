@@ -21,7 +21,7 @@ from hero_rpg import Hero, Weapon, Item, WeaponType, ItemType
 def main() -> None:
     # ── Create hero ───────────────────────────────────────────────────────────
     hero = Hero("Aric", "Warrior", max_health=120)
-    print(hero)
+    # print(hero)
 
     # ── Equip weapons (Bag[Weapon], capacity 3) ───────────────────────────────
     sword  = Weapon("Iron Sword",    WeaponType.SWORD,  damage=30)
@@ -52,9 +52,9 @@ def main() -> None:
     hero.heal(25)
 
     # ── Record kills (Counter) ────────────────────────────────────────────────
-    for _ in range(5): hero.record_kill("Goblin")
-    for _ in range(3): hero.record_kill("Orc")
-    hero.record_kill("Dragon")
+    for _ in range(5): hero.record_kill("Goblin") #5 goblin
+    for _ in range(3): hero.record_kill("Orc") #3 orc
+    hero.record_kill("Dragon") #1 dragon
     print(f"Top kills: {hero.top_kills()}")
 
     # ── Upgrade stat (dict) ───────────────────────────────────────────────────
