@@ -103,8 +103,8 @@ class Hero:
         """Return True as long as health is above zero."""
         return self.health > 0
 
-    # ── Weapons & Skills ──────────────────────────────────────────────────────
 
+    # ── Weapons & Skills ──────────────────────────────────────────────────────
     def equip_weapon(self, weapon: Weapon) -> bool:
         """
         Equip a weapon (max 3 slots).
@@ -131,8 +131,8 @@ class Hero:
         self.skills.add(skill)
         return True
 
-    # ── Inventory ─────────────────────────────────────────────────────────────
 
+    # ── Inventory ─────────────────────────────────────────────────────────────
     def pick_up_item(self, item: Item) -> bool:
         """
         Pick up an item into inventory and register it by type.
@@ -155,8 +155,8 @@ class Hero:
         """
         return dict(self._item_registry)
 
-    # ── Combat & Kill Tracking ────────────────────────────────────────────────
 
+    # ── Combat & Kill Tracking ────────────────────────────────────────────────
     def record_kill(self, enemy_type: str) -> None:
         """
         Record defeating an enemy.
@@ -181,10 +181,10 @@ class Hero:
         Return the top N most-killed enemy types.
         Counter.most_common() returns them in descending order of count.
         """
-        pass
+        return self.kill_counter.most_common(n)
+
 
     # ── Stats ─────────────────────────────────────────────────────────────────
-
     def upgrade_stat(self, stat: str, amount: int) -> bool:
         """
         Increase a stat by `amount`.
@@ -193,6 +193,7 @@ class Hero:
             True if stat exists and was upgraded; False if key not found.
         """
         pass
+
 
     # def __str__(self):
     #     pass
