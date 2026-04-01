@@ -60,78 +60,78 @@ def armor() -> Item:
 # BAG[T] TESTS
 # ══════════════════════════════════════════════════════════════════════════════
 
-# class TestBag:
-#     """Tests for the generic Bag[T] container."""
+class TestBag:
+    """Tests for the generic Bag[T] container."""
 
-#     def test_bag_starts_empty(self):
-#         """A new bag should have zero items."""
-#         bag: Bag[str] = Bag(capacity=5)
-#         assert len(bag) == 0
+    def test_bag_starts_empty(self):
+        """A new bag should have zero items."""
+        bag: Bag[str] = Bag(capacity=5)
+        assert len(bag) == 0
 
-#     def test_add_returns_true_when_space_available(self):
-#         """add() should return True and increase length by 1."""
-#         bag: Bag[str] = Bag(capacity=5)
-#         result = bag.add("item_a")
-#         assert result is True
-#         assert len(bag) == 1
+    def test_add_returns_true_when_space_available(self):
+        """add() should return True and increase length by 1."""
+        bag: Bag[str] = Bag(capacity=5)
+        result = bag.add("item_a")
+        assert result is True
+        assert len(bag) == 1
 
-#     def test_add_returns_false_when_full(self):
-#         """add() should return False and not change length when at capacity."""
-#         bag: Bag[int] = Bag(capacity=2)
-#         bag.add(1)
-#         bag.add(2)
-#         # Bag is now full
-#         result = bag.add(3)
-#         assert result is False
-#         assert len(bag) == 2
+    def test_add_returns_false_when_full(self):
+        """add() should return False and not change length when at capacity."""
+        bag: Bag[int] = Bag(capacity=2)
+        bag.add(1)
+        bag.add(2)
+        # Bag is now full
+        result = bag.add(3)
+        assert result is False
+        assert len(bag) == 2
 
-#     def test_is_full_false_when_space_remains(self):
-#         bag: Bag[str] = Bag(capacity=3)
-#         bag.add("x")
-#         assert bag.is_full() is False
+    def test_is_full_false_when_space_remains(self):
+        bag: Bag[str] = Bag(capacity=3)
+        bag.add("x")
+        assert bag.is_full() is False
 
-#     def test_is_full_true_at_capacity(self):
-#         bag: Bag[str] = Bag(capacity=2)
-#         bag.add("x")
-#         bag.add("y")
-#         assert bag.is_full() is True
+    def test_is_full_true_at_capacity(self):
+        bag: Bag[str] = Bag(capacity=2)
+        bag.add("x")
+        bag.add("y")
+        assert bag.is_full() is True
 
-#     def test_remove_existing_item(self):
-#         """remove() should return True and reduce length by 1."""
-#         bag: Bag[str] = Bag(capacity=5)
-#         bag.add("sword")
-#         result = bag.remove("sword")
-#         assert result is True
-#         assert len(bag) == 0
+    def test_remove_existing_item(self):
+        """remove() should return True and reduce length by 1."""
+        bag: Bag[str] = Bag(capacity=5)
+        bag.add("sword")
+        result = bag.remove("sword")
+        assert result is True
+        assert len(bag) == 0
 
-#     def test_remove_nonexistent_item_returns_false(self):
-#         """remove() should return False if the item is not in the bag."""
-#         bag: Bag[str] = Bag(capacity=5)
-#         result = bag.remove("ghost_item")
-#         assert result is False
+    def test_remove_nonexistent_item_returns_false(self):
+        """remove() should return False if the item is not in the bag."""
+        bag: Bag[str] = Bag(capacity=5)
+        result = bag.remove("ghost_item")
+        assert result is False
 
-#     def test_all_returns_copy_not_reference(self):
-#         """all() must return a copy so external mutation doesn't affect bag."""
-#         bag: Bag[str] = Bag(capacity=5)
-#         bag.add("a")
-#         copy = bag.all()
-#         copy.append("injected")         # mutate the copy
-#         assert len(bag) == 1            # internal bag must be unchanged
+    def test_all_returns_copy_not_reference(self):
+        """all() must return a copy so external mutation doesn't affect bag."""
+        bag: Bag[str] = Bag(capacity=5)
+        bag.add("a")
+        copy = bag.all()
+        copy.append("injected")         # mutate the copy
+        assert len(bag) == 1            # internal bag must be unchanged
 
-#     def test_bag_preserves_insertion_order(self):
-#         """Items should be returned in insertion order (list-backed)."""
-#         bag: Bag[str] = Bag(capacity=5)
-#         for ch in ["c", "a", "b"]:
-#             bag.add(ch)
-#         assert bag.all() == ["c", "a", "b"]
+    def test_bag_preserves_insertion_order(self):
+        """Items should be returned in insertion order (list-backed)."""
+        bag: Bag[str] = Bag(capacity=5)
+        for ch in ["c", "a", "b"]:
+            bag.add(ch)
+        assert bag.all() == ["c", "a", "b"]
 
-#     def test_bag_generic_with_weapon_type(self, sword, dagger):
-#         """Verify Bag works correctly when typed as Bag[Weapon]."""
-#         bag: Bag[Weapon] = Bag(capacity=2)
-#         bag.add(sword)
-#         bag.add(dagger)
-#         assert len(bag) == 2
-#         assert sword in bag.all()
+    def test_bag_generic_with_weapon_type(self, sword, dagger):
+        """Verify Bag works correctly when typed as Bag[Weapon]."""
+        bag: Bag[Weapon] = Bag(capacity=2)
+        bag.add(sword)
+        bag.add(dagger)
+        assert len(bag) == 2
+        assert sword in bag.all()
 
 
 # ══════════════════════════════════════════════════════════════════════════════
